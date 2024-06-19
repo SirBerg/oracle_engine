@@ -26,7 +26,7 @@ jobs:
       - run: cargo build
       - run: wasm-pack build --release --target nodejs
       - run: ls -la
-      - run: cd pkg
+      - run: cd ./pkg
       - run: ls -la
       - run: echo $(cat package.json | jq -c '.name="@SirBerg/oracle_engine"') > package.json
       - run: echo //@SirBerg:registry=https://npm.pkg.github.com/:_authToken=${{secrets.TOKEN}} >> .npmrc
