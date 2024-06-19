@@ -10,17 +10,7 @@ on:
       
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-
   publish-and-build-gpr:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,7 +25,9 @@ jobs:
       - run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
       - run: cargo build
       - run: wasm-pack build --release --target nodejs
+      - run: ls -la
       - run: cd pkg
+      - run: ls -la
       - run: echo $(cat package.json | jq -c '.name="@SirBerg/oracle_engine"') > package.json
       - run: echo //@SirBerg:registry=https://npm.pkg.github.com/:_authToken=${{secrets.TOKEN}} >> .npmrc
       - run: echo registry=https://npm.pkg.github.com/ >> .npmrc
