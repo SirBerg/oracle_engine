@@ -1,3 +1,7 @@
+
+> [!CAUTION]
+> ! This isn't the official repo, and only exists so I can install this as a package via NPM !  
+> Checkout the offical Repo and give the d2foundry team some kudos for their amazing work: https://github.com/d2foundry/oracle_engine
 <p align="center">
   <img src="github_banner.jpg" alt="Oracle Engine" />
 </p>
