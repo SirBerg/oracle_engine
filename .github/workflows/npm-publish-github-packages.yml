@@ -26,12 +26,15 @@ jobs:
       - run: cargo build
       - run: wasm-pack build --release --target nodejs
       - run: ls -la
-      - run: cd ./pkg
-      - run: ls -la
-      - run: echo $(cat package.json | jq -c '.name="@SirBerg/oracle_engine"') > package.json
-      - run: echo //@SirBerg:registry=https://npm.pkg.github.com/:_authToken=${{secrets.TOKEN}} >> .npmrc
-      - run: echo registry=https://npm.pkg.github.com/ >> .npmrc
-      - run: echo always-auth=true >> .npmrc
-      - run: npm publish
+      - name: Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.TOKEN}}
+        run: | 
+          cd ./pkg
+          ls -la
+          echo $(cat package.json | jq -c '.name="@SirBerg/oracle_engine"') > package.json
+          echo //@SirBerg:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUT_TOKEN >> .npmrc
+          echo registry=https://npm.pkg.github.com/ >> .npmrc
+          echo always-auth=true >> .npmrc
+          npm publish
+
