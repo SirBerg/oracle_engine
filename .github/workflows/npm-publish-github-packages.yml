@@ -12,6 +12,7 @@ on:
 jobs:
   publish-and-build-gpr:
     runs-on: ubuntu-latest
+    environment: GITHUB_TOKEN
     permissions:
       contents: read
       packages: write
@@ -36,6 +37,5 @@ jobs:
           echo scope=@SirBerg >>.npmrc
           echo //npm.pkg.github.com/:_authToken=$NODE_AUT_TOKEN >> .npmrc
           echo @SirBerg:registry=https://npm.pkg.github.com/ >> .npmrc
-          cat .npmrc
           npm publish --userconfig=./npmrc
 
