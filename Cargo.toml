@@ -1,5 +1,5 @@
 [package]
-name = "@SirBerg/oracle_engine"
+name = "oracle_engine"
 edition = "2021"
 version = "7.3.6-pve"
 rust-version = "1.65"
