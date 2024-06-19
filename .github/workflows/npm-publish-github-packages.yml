@@ -35,7 +35,8 @@ jobs:
           ls -la
           echo $(cat package.json | jq -c '.name="@SirBerg/oracle_engine"') > package.json
           echo scope=@SirBerg >>.npmrc
-          echo //npm.pkg.github.com/:_authToken=$NODE_AUT_TOKEN >> .npmrc
+          echo //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN} >> .npmrc
           echo @SirBerg:registry=https://npm.pkg.github.com/ >> .npmrc
+          echo always-auth=true >> .npmrc
           npm publish --userconfig=./npmrc
 
